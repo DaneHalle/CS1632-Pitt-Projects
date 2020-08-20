@@ -34,10 +34,11 @@ public class SortedCollection {
 	 */
 	public int remove() throws NoSuchElementException {
 		// TODO: Implement
-		if(list.isEmpty()){
-			return -1;
+		try{
+			return (int)list.remove(0);
+		}catch(IndexOutOfBoundsException e){
+			throw new NoSuchElementException();
 		}
-		return (int)list.remove(0);
 	}
 
 	/**
