@@ -1,6 +1,7 @@
 //TODO: Import libraries as needed
 import java.util.NoSuchElementException;
 import java.util.ArrayList;
+import java.lang.NumberFormatException;
 
 public class SortedCollection {
 	// TODO: Add member variables or methods as needed
@@ -33,6 +34,9 @@ public class SortedCollection {
 	 */
 	public int remove() throws NoSuchElementException {
 		// TODO: Implement
+		if(list.isEmpty()){
+			return -1;
+		}
 		return (int)list.remove(0);
 	}
 
@@ -57,7 +61,12 @@ public class SortedCollection {
 		}
 
 		for(int i=0; i<args.length; i++){
-			collection.add(Integer.parseInt(args[i]));
+			try{
+				collection.add(Integer.parseInt(args[i]));
+			}catch(NumberFormatException e){
+				showUsage();
+				return;
+			}
 		}
 		// TODO: add numbers in commandline arguments to collection using the add(int) method.
 		// If any commandline argument is not a number, call showUsage() and return.
