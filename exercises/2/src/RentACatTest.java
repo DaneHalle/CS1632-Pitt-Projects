@@ -5,7 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
-import org.mockito.*;
+import static org.mockito.Mockito.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RentACatTest {
@@ -35,12 +35,24 @@ public class RentACatTest {
 
 		// 2. Create a mock Cat with ID 1 and name "Jennyanydots", assign to c1
 		// TODO: Fill in
+		c1 = mock(Cat.class);
+		when(c1.getName()).thenReturn("Jennyanydots");
+		when(c1.getId()).thenReturn(1);
+		when(c1.toString()).thenReturn("ID 1. Jennyanydots");
 		
 		// 3. Create a mock Cat with ID 2 and name "Old Deuteronomy", assign to c2
 		// TODO: Fill in
+		c2 = mock(Cat.class);
+		when(c2.getName()).thenReturn("Old Deuteronomy");
+		when(c2.getId()).thenReturn(2);
+		when(c2.toString()).thenReturn("ID 2. Old Deuteronomy");
 
 		// 4. Create a mock Cat with ID 3 and name "Mistoffelees", assign to c3
 		// TODO: Fill in
+		c3 = mock(Cat.class);
+		when(c3.getName()).thenReturn("Mistoffelees");
+		when(c3.getId()).thenReturn(3);
+		when(c3.toString()).thenReturn("ID 3. Mistoffelees");
 		
 		// Hint: You will have to stub the mocked Cats to make them behave as if the ID
 		// is 1 and name is "Jennyanydots", etc.
@@ -65,6 +77,7 @@ public class RentACatTest {
 
 	@Test
 	public void testGetCatNullNumCats0() {
+		assertEquals("When r is empty", null, r.getCat(2));
 		// TODO
 	}
 
@@ -78,6 +91,10 @@ public class RentACatTest {
 	
 	@Test
 	public void testGetCatNumCats3() {
+		r.addCat(c1);
+		r.addCat(c2);
+		r.addCat(c3);
+		assertEquals("When r has cats", c2, r.getCat(2));
 		// TODO
 	}
 
@@ -90,6 +107,7 @@ public class RentACatTest {
 
 	@Test
 	public void testCatAvailableFalseNumCats0() {
+		assertEquals("When r is empty", false, r.catAvailable(2));
 		// TODO
 	}
 
@@ -104,6 +122,11 @@ public class RentACatTest {
 
 	@Test
 	public void testCatAvailableTrueNumCats3() {
+		r.addCat(c1);
+		r.addCat(c2);
+		r.addCat(c3);
+		r.rentCat(3);
+		assertEquals("When r has cats available but c3 is rented", true, r.catAvailable(2));
 		// TODO
 	}
 
@@ -118,6 +141,12 @@ public class RentACatTest {
 	
 	@Test
 	public void testCatAvailableFalseNumCats3() {
+		r.addCat(c1);
+		r.addCat(c2);
+		r.addCat(c3);
+		r.rentCat(2);
+		when(c2.getRented()).thenReturn(true);
+		assertEquals("When r has cats but c2 is rented", false, r.catAvailable(2));
 		// TODO
 	}
 
@@ -130,6 +159,7 @@ public class RentACatTest {
 
 	@Test
 	public void testCatExistsFalseNumCats0() {
+		assertEquals("When r has no cats", false, r.catExists(2));
 		// TODO
 	}
 
@@ -142,6 +172,10 @@ public class RentACatTest {
 	
 	@Test
 	public void testCatExistsTrueNumCats3() {
+		r.addCat(c1);
+		r.addCat(c2);
+		r.addCat(c3);
+		assertEquals("When r has cats", true, r.catExists(2));
 		// TODO
 	}
 
@@ -154,6 +188,7 @@ public class RentACatTest {
 
 	@Test
 	public void testListCatsNumCats0() {
+		assertEquals("When r has no cats", "", r.listCats());
 		// TODO
 	}
 
@@ -167,6 +202,10 @@ public class RentACatTest {
 	
 	@Test
 	public void testListCatsNumCats3() {
+		r.addCat(c1);
+		r.addCat(c2);
+		r.addCat(c3);
+		assertEquals("When r has cats", "ID 1. Jennyanydots\nID 2. Old Deuteronomy\nID 3. Mistoffelees\n", r.listCats());
 		// TODO
 	}
 
@@ -179,6 +218,7 @@ public class RentACatTest {
 
 	@Test
 	public void testRentCatFailureNumCats0() {
+		assertEquals("When r has no cats", false, r.rentCat(2));
 		// TODO
 	}
 
@@ -196,6 +236,14 @@ public class RentACatTest {
 	
 	@Test
 	public void testRentCatFailureNumCats3() {
+		r.addCat(c1);
+		r.addCat(c2);
+		r.addCat(c3);
+		when(c2.getRented()).thenReturn(true);
+		assertEquals("When r has cats but c2 is rented", false, r.rentCat(2));
+		verify(c1, never()).rentCat();
+		verify(c2, never()).rentCat();
+		verify(c3, never()).rentCat();
 		// TODO
 	}
 
@@ -208,6 +256,7 @@ public class RentACatTest {
 
 	@Test
 	public void testReturnCatFailureNumCats0() {
+		assertEquals("When r has no cats", false, r.returnCat(2)); 
 		// TODO
 	}
 
@@ -226,6 +275,15 @@ public class RentACatTest {
 	
 	@Test
 	public void testReturnCatNumCats3() {
+		r.addCat(c1);
+		r.addCat(c2);
+		r.addCat(c3);
+		r.rentCat(2);
+		when(c2.getRented()).thenReturn(true);
+		assertEquals("When r has cats but c2 is rented", true, r.returnCat(2));
+		verify(c2, times(1)).returnCat();
+		verify(c1, never()).returnCat();
+		verify(c3, never()).returnCat();
 		// TODO
 	}
 }
