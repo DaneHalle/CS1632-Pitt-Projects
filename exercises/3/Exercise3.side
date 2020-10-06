@@ -1,0 +1,314 @@
+{
+  "id": "bea4f5a1-daf7-4d21-9a50-49a5fa636a2c",
+  "version": "2.0",
+  "name": "Exercise3",
+  "url": "https://www.reddit.com/r/cats",
+  "tests": [{
+    "id": "3e439449-4806-4dd2-80f7-a51126e227eb",
+    "name": "Test Cat",
+    "commands": [{
+      "id": "e0410aeb-cec5-4c75-a3e7-7215b26c5c87",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.reddit.com/r/cats/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ce409c6e-03d0-49b2-81c2-6b6ec63928f9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1016",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a9c07a38-ed79-43f4-aae1-db9ed0688d6e",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.\\_2yYPPW47QxD4lFQTKpfpLQ",
+      "targets": [
+        ["css=.\\_2yYPPW47QxD4lFQTKpfpLQ", "css:finder"],
+        ["xpath=//div[@id='SHORTCUT_FOCUSABLE_DIV']/div[2]/div/div/div/div[2]/div/div/div/div/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Cats')]", "xpath:innerText"]
+      ],
+      "value": "Cats"
+    }]
+  }, {
+    "id": "5e7a7522-7331-4887-914b-890f31b32a82",
+    "name": "Test Join",
+    "commands": [{
+      "id": "eac43435-0739-4201-b4c9-afd1b465f2f8",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.reddit.com/r/cats/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b9353a7d-41e0-439a-a383-bc681d448a12",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1016",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e2719cbc-9090-420a-8530-58343505f066",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.\\_1Q_zPN5YtTLQVG72WhRuf3 > .\\_3VgTjAJVNNV7jzlnwY-OFY",
+      "targets": [
+        ["css=.\\_1Q_zPN5YtTLQVG72WhRuf3 > .\\_3VgTjAJVNNV7jzlnwY-OFY", "css:finder"],
+        ["xpath=//div[@id='SHORTCUT_FOCUSABLE_DIV']/div[2]/div/div/div/div[2]/div/div/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/div/div[2]/button", "xpath:position"]
+      ],
+      "value": "JOIN"
+    }]
+  }, {
+    "id": "93a140e9-465f-4560-901b-c59dde798f5f",
+    "name": "Test Sign Up",
+    "commands": [{
+      "id": "21864805-e77a-4acb-930d-563317b39829",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.reddit.com/r/cats/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "914088c9-1cd6-47a1-b2dd-c1afce27a0df",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1016",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "23bd0310-0d6e-4041-b64d-f766590b084e",
+      "comment": "",
+      "command": "storeAttribute",
+      "target": "xpath=//a[contains(text(),'sign up')]@href",
+      "targets": [],
+      "value": "herf"
+    }, {
+      "id": "b5c93fa3-94dd-4b9c-a74e-182e53c6b4de",
+      "comment": "",
+      "command": "assert",
+      "target": "herf",
+      "targets": [],
+      "value": "https://www.reddit.com/register/?dest=https%3A%2F%2Fwww.reddit.com%2Fr%2Fcats%2F"
+    }]
+  }, {
+    "id": "32269e8f-2fa1-4391-a743-bcfc815adcf1",
+    "name": "Test Rule 11 and 12",
+    "commands": [{
+      "id": "08966bed-759f-4b24-a753-42cb78294ddb",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.reddit.com/r/cats/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "930b9032-ee42-47a4-932a-ad0f5e9c85e7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1016",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b72be4c5-cb21-4c36-94c4-726146ebf5cd",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,565)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2bc58e14-d604-4535-98da-cbd9d501bffd",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,1208)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "13c2e6cd-d8e7-4de8-8293-3e08ef9fbeb3",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,1700)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4d2310c9-83e7-49f0-99f7-db3ebf842b62",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.\\_8ZLJI1-ZiP7pHJ_yO1L4Z:nth-child(11) .\\_3P6gMBKOhtWWrytWm-8hc:nth-child(1)",
+      "targets": [
+        ["css=.\\_8ZLJI1-ZiP7pHJ_yO1L4Z:nth-child(11) .\\_3P6gMBKOhtWWrytWm-8hc:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='SHORTCUT_FOCUSABLE_DIV']/div[2]/div/div/div/div[2]/div[3]/div[2]/div/div[5]/div/div[2]/div[11]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[11]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4e56a95-add0-4052-bd28-ffea746304c0",
+      "comment": "",
+      "command": "assertElementNotPresent",
+      "target": "css=.\\_8ZLJI1-ZiP7pHJ_yO1L4Z:nth-child(12) .\\_3P6gMBKOhtWWrytWm-8hc:nth-child(1)",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "01161a69-0ae0-4ded-8568-74367b3fbcef",
+    "name": "Test Smelly Cat",
+    "commands": [{
+      "id": "4df5df8b-9f68-4fe8-8cbe-8c4949aa5e6c",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.reddit.com/r/cats/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "82e3144f-a145-448a-bcdd-4bfe71446ba8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1016",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "68ba0097-0b17-4475-8dec-5187136e47ee",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.Z_HUY3BUsGOBOtdmH94ZS",
+      "targets": [
+        ["css=.Z_HUY3BUsGOBOtdmH94ZS", "css:finder"],
+        ["xpath=//a[contains(text(),'sign up')]", "xpath:link"],
+        ["xpath=//div[@id='SHORTCUT_FOCUSABLE_DIV']/div/header/div/div[2]/div/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.reddit.com/register/?dest=https%3A%2F%2Fwww.reddit.com%2Fr%2Fcats')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4afa0a89-9346-48db-bf77-98f6d8a6526f",
+      "comment": "",
+      "command": "click",
+      "target": "id=header-search-bar",
+      "targets": [
+        ["id=header-search-bar", "id"],
+        ["name=q", "name"],
+        ["css=#header-search-bar", "css:finder"],
+        ["xpath=//input[@id='header-search-bar']", "xpath:attributes"],
+        ["xpath=//div[@id='SearchDropdown']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "65b072fb-8d49-44e2-a08c-ec3d39aa87cf",
+      "comment": "",
+      "command": "type",
+      "target": "id=header-search-bar",
+      "targets": [
+        ["id=header-search-bar", "id"],
+        ["name=q", "name"],
+        ["css=#header-search-bar", "css:finder"],
+        ["xpath=//input[@id='header-search-bar']", "xpath:attributes"],
+        ["xpath=//div[@id='SearchDropdown']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "smelly cat"
+    }, {
+      "id": "1f03c9c5-820f-4b36-bace-f2c2e4775026",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=header-search-bar",
+      "targets": [
+        ["id=header-search-bar", "id"],
+        ["name=q", "name"],
+        ["css=#header-search-bar", "css:finder"],
+        ["xpath=//input[@id='header-search-bar']", "xpath:attributes"],
+        ["xpath=//div[@id='SearchDropdown']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "a5edd401-fdf7-4520-9547-3d0278ea6491",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.\\_3j9XjJayuKq7dJ8huVnCuS",
+      "targets": [
+        ["css=.\\_3j9XjJayuKq7dJ8huVnCuS", "css:finder"],
+        ["xpath=//div[@id='SHORTCUT_FOCUSABLE_DIV']/div[2]/div/div/div/div[2]/div/div/h3/span", "xpath:idRelative"],
+        ["xpath=//h3/span", "xpath:position"],
+        ["xpath=//span[contains(.,'smelly cat')]", "xpath:innerText"]
+      ],
+      "value": "smelly cat"
+    }, {
+      "id": "0ae8469a-bf0c-45a6-96d0-76d9e061fc51",
+      "comment": "",
+      "command": "click",
+      "target": "css=.N0zmIZbfRSCGk2rUOGHSS",
+      "targets": [
+        ["css=.N0zmIZbfRSCGk2rUOGHSS", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca2bbeb9-91c5-4dd9-a953-8ee45c727365",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.\\_3j9XjJayuKq7dJ8huVnCuS",
+      "targets": [
+        ["css=.\\_3j9XjJayuKq7dJ8huVnCuS", "css:finder"],
+        ["xpath=//div[@id='SHORTCUT_FOCUSABLE_DIV']/div[2]/div/div/div/div[2]/div/div/h3/span", "xpath:idRelative"],
+        ["xpath=//h3/span", "xpath:position"],
+        ["xpath=//span[contains(.,'smelly cat')]", "xpath:innerText"]
+      ],
+      "value": "smelly cat"
+    }]
+  }, {
+    "id": "c6f4c352-f296-4bf1-9ed4-ebf76bc706a0",
+    "name": "Test Rule 3",
+    "commands": [{
+      "id": "880fb173-56c5-4ced-bb3d-fa5c004453e3",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.reddit.com/r/cats/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "46e298a3-9319-4c81-986a-6722329edac6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1016",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4c878c1d-8cba-4d6f-8b92-5ba386e74273",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,571)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b4e9725c-9536-45b8-a77f-d378141a0a99",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,1700)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ec82c557-cb17-4778-a247-5a05c71f2d81",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//div[@id='SHORTCUT_FOCUSABLE_DIV']/div[2]/div/div/div/div[2]/div[3]/div[2]/div/div[5]/div/div[2]/div[3]/div/div[2]/div",
+      "targets": [
+        ["css=.\\_8ZLJI1-ZiP7pHJ_yO1L4Z:nth-child(3) .tbIApBd2DM_drfZQJjIum", "css:finder"],
+        ["xpath=//div[@id='SHORTCUT_FOCUSABLE_DIV']/div[2]/div/div/div/div[2]/div[3]/div[2]/div/div[5]/div/div[2]/div[3]/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div[5]/div/div[2]/div[3]/div/div[2]/div", "xpath:position"]
+      ],
+      "value": "No NSFW, animal abuse, or cruelty"
+    }]
+  }],
+  "suites": [{
+    "id": "ef08497d-94e3-41ab-9a39-bf300022d672",
+    "name": "RedditCats",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["3e439449-4806-4dd2-80f7-a51126e227eb", "5e7a7522-7331-4887-914b-890f31b32a82", "93a140e9-465f-4560-901b-c59dde798f5f", "32269e8f-2fa1-4391-a743-bcfc815adcf1", "01161a69-0ae0-4ded-8568-74367b3fbcef", "c6f4c352-f296-4bf1-9ed4-ebf76bc706a0"]
+  }],
+  "urls": ["https://www.reddit.com/", "https://www.reddit.com/r/cats"],
+  "plugins": []
+}
