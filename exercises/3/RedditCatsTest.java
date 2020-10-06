@@ -43,19 +43,19 @@ public class RedditCatsTest {
     driver.quit();
   }
   @Test
-  public void testCat() {
+  public void fUNTITLE() {
     driver.get("https://www.reddit.com/r/cats/");
     driver.manage().window().setSize(new Dimension(1920, 1016));
     assertThat(driver.findElement(By.cssSelector(".\\_2yYPPW47QxD4lFQTKpfpLQ")).getText(), is("Cats"));
   }
   @Test
-  public void testJoin() {
+  public void fUNJOINBUTTONEXISTS() {
     driver.get("https://www.reddit.com/r/cats/");
     driver.manage().window().setSize(new Dimension(1920, 1016));
     assertThat(driver.findElement(By.cssSelector(".\\_1Q_zPN5YtTLQVG72WhRuf3 > .\\_3VgTjAJVNNV7jzlnwY-OFY")).getText(), is("JOIN"));
   }
   @Test
-  public void testSignUp() {
+  public void fUNSIGNUPLINK() {
     driver.get("https://www.reddit.com/r/cats/");
     driver.manage().window().setSize(new Dimension(1920, 1016));
     {
@@ -66,7 +66,7 @@ public class RedditCatsTest {
     assertEquals(vars.get("herf").toString(), "https://www.reddit.com/register/?dest=https%3A%2F%2Fwww.reddit.com%2Fr%2Fcats%2F");
   }
   @Test
-  public void testRule11and12() {
+  public void fUNRULES11ITEMS() {
     driver.get("https://www.reddit.com/r/cats/");
     driver.manage().window().setSize(new Dimension(1920, 1016));
     js.executeScript("window.scrollTo(0,565)");
@@ -82,7 +82,7 @@ public class RedditCatsTest {
     }
   }
   @Test
-  public void testSmellyCat() {
+  public void fUNSEARCHSMELLYCAT() {
     driver.get("https://www.reddit.com/r/cats/");
     driver.manage().window().setSize(new Dimension(1920, 1016));
     {
@@ -98,7 +98,7 @@ public class RedditCatsTest {
     assertThat(driver.findElement(By.cssSelector(".\\_3j9XjJayuKq7dJ8huVnCuS")).getText(), is("smelly cat"));
   }
   @Test
-  public void testRule3() {
+  public void fUNRULE3() {
     driver.get("https://www.reddit.com/r/cats/");
     driver.manage().window().setSize(new Dimension(1920, 1016));
     js.executeScript("window.scrollTo(0,571)");
