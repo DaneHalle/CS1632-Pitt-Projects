@@ -14,12 +14,12 @@ public class CoffeeMakerQuestImpl implements CoffeeMakerQuest {
 	private int currentRoomIndex;
 	private boolean gameOver;
 	
-	CoffeeMakerQuestImpl() {
-		currentPlayer=null;
-		roomMap=null;
-		currentRoomIndex=-1;
-		gameOver=false;	
-		// TODO
+	CoffeeMakerQuestImpl() 
+	{
+		currentPlayer    = null;
+		roomMap          = null;
+		currentRoomIndex = -1;
+		gameOver         = false;
 	}
 
 	/**
@@ -27,9 +27,8 @@ public class CoffeeMakerQuestImpl implements CoffeeMakerQuest {
 	 * 
 	 * @return true if successful, false otherwise
 	 */
-	public boolean isGameOver() {
-		// TODO
-		
+	public boolean isGameOver() 
+	{		
 		return gameOver;
 	}
 
@@ -38,8 +37,8 @@ public class CoffeeMakerQuestImpl implements CoffeeMakerQuest {
 	 * 
 	 * @param p the player
 	 */
-	public void setPlayer(Player p) {
-		// TODO
+	public void setPlayer(Player p) 
+	{
 		currentPlayer=p;
 	}
 	
@@ -50,13 +49,17 @@ public class CoffeeMakerQuestImpl implements CoffeeMakerQuest {
 	 * @param room the room to add
 	 * @return true if successful, false otherwise
 	 */
-	public boolean addFirstRoom(Room room) {
-		// TODO
-		if(roomMap==null) {
-			roomMap=new ArrayList<Room>();
+	public boolean addFirstRoom(Room room) 
+	{
+		if(roomMap == null)
+		{
+			roomMap = new ArrayList<Room>();
+			
 			roomMap.add(room);
+			
 			return true;
 		}
+		
 		return false;
 	}
 
@@ -75,13 +78,24 @@ public class CoffeeMakerQuestImpl implements CoffeeMakerQuest {
 	 * @param southDoor string to label the south door of the newly added room
 	 * @return true if successful, false otherwise
 	 */
-	public boolean addRoomAtNorth(Room room, String northDoor, String southDoor) {
-		// TODO
-		if(roomMap!=null && northDoor!=null && southDoor!=null) {
+	public boolean addRoomAtNorth(Room room, String northDoor, String southDoor) 
+	{
+		if(roomMap != null && northDoor != null && southDoor != null)
+		{
+		  for(Room pRoom: roomMap)
+		  {
+		    if(pRoom.getAdjective() == room.getAdjective() || pRoom.getFurnishing() == room.getFurnishing())
+		    {
+		      return false;
+		    }
+		  }
 			roomMap.add(room);
-			roomMap.get(roomMap.size()-1).setSouthDoor(southDoor);;
-			roomMap.get(roomMap.size()-2).setNorthDoor(northDoor);;
+			roomMap.get(roomMap.size()-1).setSouthDoor(southDoor);
+			roomMap.get(roomMap.size()-2).setNorthDoor(northDoor);
+			
+			return true;
 		} 
+		
 		return false;
 	}
 
@@ -91,9 +105,10 @@ public class CoffeeMakerQuestImpl implements CoffeeMakerQuest {
 	 * 
 	 * @return room player is in, or null if not yet initialized
 	 */ 
-	public Room getCurrentRoom() {
-		// TODO
-		if(currentRoomIndex!=-1) {
+	public Room getCurrentRoom() 
+	{
+		if(currentRoomIndex!=-1) 
+		{
 			return roomMap.get(currentRoomIndex);
 		}
 		return null;
@@ -106,10 +121,12 @@ public class CoffeeMakerQuestImpl implements CoffeeMakerQuest {
 	 * @param room the room to set as the player location
 	 * @return true if successful, false otherwise
 	 */
-	public boolean setCurrentRoom(Room room) {
-		// TODO
+	public boolean setCurrentRoom(Room room) 
+	{
 		int isRoom=roomMap.indexOf(room);
-		if(isRoom!=-1) {
+		
+		if(isRoom!=-1) 
+		{
 			currentRoomIndex=isRoom;
 			return true;
 		}
@@ -122,9 +139,9 @@ public class CoffeeMakerQuestImpl implements CoffeeMakerQuest {
 	 * 
 	 * @return command prompt string
 	 */
-	public String getInstructionsString() {
-		// TODO
-		return "Instructions (N,S,L,I,D,H) > ";
+	public String getInstructionsString() 
+	{
+		return " INSTRUCTIONS (N,S,L,I,D,H) > ";
 	}
 	
 	/**
@@ -141,90 +158,131 @@ public class CoffeeMakerQuestImpl implements CoffeeMakerQuest {
 	 * @param cmd the user command
 	 * @return response string for the command
 	 */
-	public String processCommand(String cmd) {
-		String out="";
-		switch(cmd.toUpperCase()) {
+	public String processCommand(String cmd) 
+	{
+		String out = "";
+		
+		switch(cmd.toUpperCase()) 
+		{
 			case "N":
-				if (currentRoomIndex+1!=roomMap.size()) {
+				if (currentRoomIndex+1 != roomMap.size()) 
+				{
 					out="";
 					currentRoomIndex++;
 				}
 				return out;
 			case "S":
-				if(currentRoomIndex!=0) {
+				if(currentRoomIndex != 0) 
+				{
 					currentRoomIndex--;
+				}
+				else
+				{
+				  out = "A door in that direction does not exist.\n";
 				}
 				return out;
 			case "L":
-				Item thisRoomItem=roomMap.get(currentRoomIndex).getItem();
+				Item thisRoomItem = roomMap.get(currentRoomIndex).getItem();
 				out="There might be something here...\n";
-				if(thisRoomItem==Item.NONE) {
-					out="You don't see anything out of the ordinary.";
-				} else if (thisRoomItem==Item.COFFEE) {
-					out+="You found some bitter coffee!";
+				
+				if(thisRoomItem == Item.NONE) 
+				{
+					out = "You don't see anything out of the ordinary.\n";
+				} 
+				else if (thisRoomItem == Item.COFFEE) 
+				{
+					out += "You found some caffeinated coffee!\n";
 					currentPlayer.addItem(Item.COFFEE);
-				} else if (thisRoomItem==Item.CREAM) {
-					out+="You found some creamy cream!";
+				} 
+				else if (thisRoomItem == Item.CREAM) 
+				{
+					out += "You found some creamy cream!\n";
 					currentPlayer.addItem(Item.CREAM);
-				} else if (thisRoomItem==Item.SUGAR) {
-					out+="You found some sweet sugar!";
+				}
+				else if (thisRoomItem == Item.SUGAR)
+				{
+					out += "You found some sweet sugar!\n";
 					currentPlayer.addItem(Item.SUGAR);
 				}
 				break;
 			case "I":
-				out=currentPlayer.getInventoryString();
+				out = currentPlayer.getInventoryString();
 				break;
 			case "D":
-				boolean checkSugar=currentPlayer.checkSugar();
-				boolean checkCream=currentPlayer.checkCream();
-				boolean checkCoffee=currentPlayer.checkCoffee();
-				if(checkSugar && !checkCream && !checkCoffee) {
-					out="You drink the sweet sugar hoping for the bitter coffee and smooth cream, however, it never comes. You Lose.";
-				} else if(!checkSugar && checkCream && !checkCoffee) {
-					out="You drink the smnooth cream hoping for the bitter coffee and sweet sugar, however, it never comes. You Lose.";
-				} else if(!checkSugar && !checkCream && checkCoffee) {
-					out="You drink the bitter coffee hoping for the smooth cream and sweet sugar, however, it never comes. You Lose.";
-				} else if(checkSugar && checkCream && !checkCoffee) {
-					out="You drink the sweet sugar mixed with the smooth cream hoping for the bitter coffee, however, it never comes. You Lose.";
-				} else if(checkSugar && !checkCream && checkCoffee) {
-					out="You drink the sweet sugar mixed with the bitter coffee hoping for the smooth cream, however, it never comes. You Lose.";
-				} else if(!checkSugar && checkCream && checkCoffee) {
-					out="You drink the bitter coffe mixed with the smooth cream hoping for the esweet sugar, however, it never comes. You Lose.";
-				} else if(checkSugar && checkCream && checkCoffee) {
-					out="You drink the bitter coffee mixed with the smooth cream and sweet sugar. It tastes wonderful. You win.";
-				} else {
-					out="You tilt the glass back expecting bitter coffee, sweet sugar, and smooth cream, yet all that comes out is dissapointment in the form of air. You Lose.";
+				boolean checkSugar  = currentPlayer.checkSugar();
+				boolean checkCream  = currentPlayer.checkCream();
+				boolean checkCoffee = currentPlayer.checkCoffee();
+				
+				if(checkSugar && !checkCream && !checkCoffee) 
+				{
+					out = "\nYou eat the sugar, but without caffeine, you cannot study.\nYou lose!\n";
+				} 
+				else if(!checkSugar && checkCream && !checkCoffee) 
+				{
+					out = "\nYou drink the cream, but without caffeine, you cannot study.\nYou lose!\n";
+				} 
+				else if(!checkSugar && !checkCream && checkCoffee) 
+				{
+					out = "\nWithout cream, you get an ulcer and cannot study.\nYou lose!\n";
+				} 
+				else if(checkSugar && checkCream && !checkCoffee) 
+				{
+					out = "\nYou drink the sweetened cream, but without caffeine you cannot study.\nYou lose!\n";
+				} 
+				else if(checkSugar && !checkCream && checkCoffee) 
+				{
+					out = "\nWithout cream, you get an ulcer and cannot study.\nYou lose!\n";
+				} 
+				else if(!checkSugar && checkCream && checkCoffee) 
+				{
+				  out = "\nWithout sugar, the coffee is too bitter. You cannot study.\nYou lose!\n";
+				} 
+				else if(checkSugar && checkCream && checkCoffee) 
+				{
+					out = currentPlayer.getInventoryString() + "\nYou drink the beverage and are ready to study!\nYou win!\n";
+				} 
+				else 
+				{
+					out = currentPlayer.getInventoryString() + "\nYou drink the air, as you have no coffee, sugar, or cream.\nThe air is invigorating, but not invigorating enough. You cannot study.\nYou lose!\n";
 				}
-				gameOver=true;
+				gameOver = true;
 				break;
 			case "H":
-				String missing=checkMissing();
-				if(missing==null) {
-					out="N - Move to the northern room if possible\n";
-					out+="S - Move to the sothern room if possible\n";
-				} else if (missing=="N") {
-					out="S - Move to the sothern room if possible\n";
-				} else if (missing=="S") {
-					out="N - Move to the northern room if possible\n";
+				String missing = checkMissing();
+				
+				if(missing == null) 
+				{
+					out="N - Go north\n";
+					out+="S - Go south\n";
+				} 
+				else if (missing == "N")
+				{
+					out="S - Go south\n";
+				} 
+				else if (missing == "S") 
+				{
+					out="N - Go north\n";
 				}
-				out+="L - Collect any item that may be in the room\n";
-				out+="I - Shows any items you may have or have not collected\n";
-				out+="D - Will drink items. If you have all items, you win, if you are missing all or any, you lose\n";
-				out+="H - Shows the Help menu which shows possible commands and descriptions for said commands\n";
+				
+				out += "L - Look and collect any items in the room\n";
+				out += "I - Show inventory of items collected\n";
+				out += "D - Drink coffee made from items in inventory\n";
 				break;
 			default:
-				out="What?";
+				out = "What?";
 				break;
 		}
-		// TODO
-		out+="\n";
 		return out;
 	}
 	
-	private String checkMissing() {
-		if(!roomMap.get(currentRoomIndex).getDescription().contains("North")) {
+	private String checkMissing() 
+	{
+		if(roomMap.size()-1 == currentRoomIndex) 
+		{ 
 			return "N";
-		} else if(!roomMap.get(currentRoomIndex).getDescription().contains("South")) {
+		} 
+		else if (currentRoomIndex == 0) 
+		{
 			return "S";
 		}
 		return null;
