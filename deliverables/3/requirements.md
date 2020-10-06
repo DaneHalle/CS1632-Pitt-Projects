@@ -1,11 +1,17 @@
-FUN-TITLE - The title of the page https://www.reddit.com/r/cats/ shall be "Cats".
+## App homepage: https://cs1632.appspot.com/
 
-FUN-JOIN-BUTTON-EXISTS - The page shall display a button with the text "JOIN" on it. The button is located on the banner beside the cat logo.
+FUN-WELCOME - The homepage shall display the quote "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.", and below it the author "- Brian W. Kernighan".  The title shall be "CS1632 D3".
 
-FUN-SIGNUP-LINK - The page shall display a signup button which links to the registration page.  The button is at the far top right corner.  The URL of the registration page is: https://www.reddit.com/register/?dest=https%3A%2F%2Fwww.reddit.com%2Fr%2Fcats%2F (if the URL of the original page was https://www.reddit.com/r/cats/) or https://www.reddit.com/register/?dest=https%3A%2F%2Fwww.reddit.com%2Fr%2Fcats (if the URL of the original page was https://www.reddit.com/r/cats)
+FUN-LINKS - Every page shall include five links at the top, to "CS1632 D3 Home", "Factorial", "Fibonacci", "Hello", and "Cathedral Pics".  These shall link to `/`, `/fact`, `/fib`, `/hello`, and `/cathy`, respectively.
 
-FUN-SEARCH-SMELLY-CAT - On a search of "smelly cat" at the search box at the top, the next page with the list of results will display the search term "smelly cat" at the top above "Search results".  
+FUN-FACT - The factorial page (`/fact`) shall allow a user to enter a positive integer from 1 to 10, and upon pressing submit, shall show to the user the factorial of the value (e.g. "Factorial of 5 is 120!").
 
-FUN-RULE-3 - The page shall display a set of R/Cats Rules of which the 3rd is: "No NSFW, animal abuse, or cruelty".  The rules box is located in the bottom right corner.
+FUN-FIB - The Fibonacci page (`/fib`) shall allow a user to enter a positive integer from 1 to 10, and upon pressing submit, shall show to the user the Fibonnaci of the value (e.g. "Fibonacci of 5 is 5!").  Note that the Fibonnaci series is: f(1) = 1, f(2) = 1, f(3) = 2, f(4) = 3, f(5) = 5, f(6) = 8, ...
 
-FUN-RULES-11-ITEMS - The R/Cats Rules should have exactly 11 items.
+FUN-INVALID-VALUE - For both the Fibonacci and Factorial pages, if a user enters an invalid string of any kind (any string other than integers from 1 to 10), they shall be informed that the value is 1 (e.g., "Fibonacci of -100 is 1!")
+
+FUN-HELLO - Accessing the hello page (`/hello`) with no trailing values in the URL shall display the message "Hello CS1632, from Dr. Ahn!".
+
+FUN-HELLO-TRAILING - If a trailing value is provided in the URL when accessing the `/hello` page, then the message shall display hello from that trailing value.  For example, when accessing `/hello/Jazzy`, the system shall display "Hello CS1632, from Jazzy!".  This shall work for all input values.
+
+FUN-CATHY - The Cathedral page (`/cathy`) shall display exactly three images in a numbered list.
