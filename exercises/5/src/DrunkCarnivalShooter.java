@@ -2,7 +2,7 @@
 /**
  * Code by @author Wonsun Ahn
  * 
- * <p>CarnivalShooter: Using arbitrary trial and shooter
+ * CarnivalShooter: Using arbitrary trial and shooter
  * numbers, find how many targets are hit in those trials.
  */
 

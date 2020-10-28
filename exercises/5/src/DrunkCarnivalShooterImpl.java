@@ -1,13 +1,14 @@
 
-/**
- * Code by @author Wonsun Ahn
- * 
- * DrunkCarnivalShooter: A carnival shooter with four targets, but while drunk!
- */
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+/**
+ * Code by @author Wonsun Ahn
+ * 
+ * <p>DrunkCarnivalShooter: A carnival shooter with four targets, but while drunk.
+ */
+
 
 public class DrunkCarnivalShooterImpl implements DrunkCarnivalShooter {
 	private Random rand;
@@ -26,7 +27,6 @@ public class DrunkCarnivalShooterImpl implements DrunkCarnivalShooter {
 	DrunkCarnivalShooterImpl() {
 		rand = new Random();
 		targets = new ArrayList<Boolean>();
-//		targets = null;
 		remainingTargetNum = 4;
 		for (int i = 0; i < remainingTargetNum; i++) {
 			targets.add(true);
@@ -46,11 +46,11 @@ public class DrunkCarnivalShooterImpl implements DrunkCarnivalShooter {
 		int offsetNum = rand.nextInt(3) - 1;
 		int fuzzedT = t + offsetNum;
 		if (offsetNum > 0) {
-			builder.append("You aimed at target #" + t + 
-					" but the Force pulls your bullet to the right.\n");
+			builder.append("You aimed at target #" + t 
+					+ " but the Force pulls your bullet to the right.\n");
 		} else if (offsetNum < 0) {
-			builder.append("You aimed at target #" + t + 
-					" but the Force pulls your bullet to the left.\n");
+			builder.append("You aimed at target #" + t 
+					+ " but the Force pulls your bullet to the left.\n");
 		}
 		return fuzzedT;
 	}
@@ -64,14 +64,15 @@ public class DrunkCarnivalShooterImpl implements DrunkCarnivalShooter {
 	 */
 	public String getRoundString() {
 		String ret = "Round #" + roundNum + ":";
+		StringBuffer buf = new StringBuffer();
 		for (boolean standing : targets) {
 			if (standing) {
-				ret += "  ||  ";
+				buf.append("  ||  ");
 			} else {
-				ret += "      ";
+				buf.append("      ");
 			}
 		}
-		return ret;
+		return ret + buf.toString();
 	}
 
 	/**
@@ -89,8 +90,8 @@ public class DrunkCarnivalShooterImpl implements DrunkCarnivalShooter {
 		// Shoot at aimed target
 		int newT = shootFuzz(t, builder);
 		if (takeDownTarget(newT)) {
-			builder.append("You hit target #" + newT + 
-					"! \"The Force is strong with this one.\", Darth opines.\n");
+			builder.append("You hit target #" + newT 
+					+ "! \"The Force is strong with this one.\", Darth opines.\n");
 			remainingTargetNum--;
 			return true;
 		} else {
@@ -133,7 +134,6 @@ public class DrunkCarnivalShooterImpl implements DrunkCarnivalShooter {
 	 * @return the number of remaining targets
 	 */
 	public int getRemainingTargetNum() {
-//		int remaining = remainingTargetNum;
 		return remainingTargetNum;
 	}
 
@@ -146,8 +146,6 @@ public class DrunkCarnivalShooterImpl implements DrunkCarnivalShooter {
 	 * 
 	 * @param args Optional command line arguments. Set args[0] to "test" to verify
 	 *             game with JPF.
-	 *             
-	 * @return the main method does not return anything (stale comment that needs removal)
 	 */
 	public static void main(String[] args) {
 		DrunkCarnivalShooterImpl shooter = new DrunkCarnivalShooterImpl();
