@@ -1,6 +1,10 @@
+import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import gov.nasa.jpf.vm.Verify;
 
 /**
  * Code by @author Wonsun Ahn
@@ -31,9 +35,14 @@ public class DrunkCarnivalShooterTest {
 		 * Verify API, look at:
 		 * https://github.com/javapathfinder/jpf-core/wiki/Verify-API-of-JPF
 		 */
-
 		// Create the game
 		shooter = DrunkCarnivalShooter.createInstance();
+
+		targets[0] = Verify.getBoolean();
+		targets[1] = Verify.getBoolean();
+		targets[2] = Verify.getBoolean();
+		targets[3] = Verify.getBoolean();
+		targetChoice = Verify.getInt(0, 3);
 		// Set up the targets in the game to reflect the targets array
 		for (int i = 0; i < 4; i++) {
 			if (targets[i] == false) {
@@ -58,7 +67,7 @@ public class DrunkCarnivalShooterTest {
 	/**
 	 * Test case for boolean shoot(int t, StringBuilder builder).
 	 * 
-	 * <p>Preconditions: Create StringBuilder builder = new StringBuilder();
+	 * <p>Preconditions: Create StringBuilder builder = new StringBuilder()
 	 * <br>Execution steps: Call shooter.shoot(targetChoice, builder);
 	 * <br>Invariant: The number of targets which returns true on shooter.isTargetStanding(i)
 	 *            where i = 0 ... 3 is equal to shooter.getRemainingTargetNum().
@@ -88,6 +97,17 @@ public class DrunkCarnivalShooterTest {
 		 * 
 		 * PLEASE COMMENT OUT when you are done implementing.
 		 */
-		System.out.println(failString);
+		StringBuilder builder = new StringBuilder();
+		shooter.shoot(targetChoice, builder);
+		int num = 0;
+		for(int i = 0; i< 3; i++)
+		{
+			if(shooter.isTargetStanding(i))
+			{
+				num++;
+			}
+		}
+		assertEquals(failString, num, shooter.getRemainingTargetNum());
+
 	}
 }

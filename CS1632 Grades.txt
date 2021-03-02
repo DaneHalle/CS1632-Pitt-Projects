@@ -1,0 +1,28 @@
+CS1632 Grades
+
+Exercise 1
+	24/30
+Exercise 2
+	59/60
+Exercise 3
+	80/80
+Exercise 4
+	110/110
+Exercise 5
+	30/30
+
+Supplement 1
+	19/20
+Supplement 2
+	20/1
+
+Deliverable 1
+	95/100
+Deliverable 2
+	95/100
+Deliverable 3
+	100/100
+Deliverable 4
+	100/100
+Deliverable 5
+	100/100
